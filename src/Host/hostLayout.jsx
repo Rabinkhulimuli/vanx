@@ -1,4 +1,6 @@
-import {NavLink,Outlet} from 'react-router-dom'
+import { useContext } from 'react'
+import {NavLink,Outlet,useNavigate} from 'react-router-dom'
+import { UserContext } from '../register/userContext'
 export default function HostLayout(){
     const styles={
         backgroundColor:"red",
@@ -6,6 +8,12 @@ export default function HostLayout(){
         color:"white",
         fontWeight:"bolder",
         textAlign:"center"
+    }
+    const redirect=useNavigate()
+    const {login}=useContext(UserContext)
+    if(!login){
+        return redirect("/login", { state: { message: "You must login to enter host" } });
+
     }
     return(
         <>

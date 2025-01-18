@@ -15,7 +15,6 @@ import VanDe,{loader as VanDeLoader} from './Host/vande'
 import DetailVan from './Host/detailHostVan/detail'
 import Pricing from './Host/detailHostVan/pricing'
 import Photos from './Host/detailHostVan/photos'
-import {authenticate} from './register/requireAuth'
 
 const router=createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout/>} >
@@ -25,9 +24,9 @@ const router=createBrowserRouter(createRoutesFromElements(
   <Route path="vans" element={<Vans/>} loader={VansLoader} />
   <Route path="vans/:id" element={<Detail/>} loader={ DetailLoader} />
   
-  <Route path="host" element={<HostLayout />} loader ={async ()=> await authenticate()
-    
-  } >
+  <Route path="host" element={<HostLayout />} 
+ 
+     >
     <Route index  element={<Dashboard/>}  />
     <Route path="income" element={<Income/>}  />
     <Route path="van" element={<Van/>} loader={hostLoader} />
